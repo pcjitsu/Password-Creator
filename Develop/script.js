@@ -7,7 +7,28 @@ var possibleValues = {
   numberArray: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
   specialArray: ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"],
 };
-console.log(possibleValues);
+
+//Get Arrays prepped for pool of values
+var passwordValuePool = {};
+//Start adding values to pool with checks
+var checkValues = function () {
+  var lowerArrayCheck = prompt("Do you want to include lower case letters? \n Type Y or N").toLowerCase();
+  if ((lowerArrayCheck = "Y")) {
+    passwordValuePool.lower = possibleValues.lowerCaseArray;
+  }
+  var upperArrayCheck = prompt("Do you want to include lower case letters? \n Type Y or N").toLowerCase();
+  if ((upperArrayCheck = "Y")) {
+    passwordValuePool.upper = possibleValues.upperCaseArray;
+  }
+  var upperArrayCheck = prompt("Do you want to include numbers? \n Type Y or N").toLowerCase();
+  if ((upperArrayCheck = "Y")) {
+    passwordValuePool.number = possibleValues.numberArray;
+  }
+  var upperArrayCheck = prompt("Do you want to include special characters? \n Type Y or N").toLowerCase();
+  if ((upperArrayCheck = "Y")) {
+    passwordValuePool.special = possibleValues.specialArray;
+  }
+};
 
 var generatePassword = function () {
   let passwordLength = Number(prompt("Please Select A Number Between 8 and 128"));
@@ -17,23 +38,11 @@ var generatePassword = function () {
   checkValues();
 };
 
-//Get Arrays prepped for pool of values
-var passwordValuePool = {};
+console.log(passwordValuePool);
 
-//Start adding values to pool with checks
-var checkValues = function () {
-  var lowerArrayCheck = prompt("Do you want to include lower case letters? \n Type Y or N").toLowerCase();
-  if ((lowerArrayCheck = "Y")) {
-    passwordValuePool.possibleValues[0];
-  }
-  var upperArrayCheck = prompt("Do you want to include lower case letters? \n Type Y or N").toLowerCase();
-  if ((upperArrayCheck = "Y")) {
-    passwordValuePool.possibleValues[1];
-  }
-  console.log(passwordValuePool);
-};
+//Need to add cofirmations
 
-//Need to figure out how to add things from one object to another
+//Assignment Code Below
 
 // Key for random object
 // var randomProperty = function (obj) {
@@ -60,9 +69,10 @@ generateBtn.addEventListener("click", writePassword);
 // 1-Write Code that Promps user on button click Done
 // 2-prompt for length of password between 8-128 Done
 // 3- Validate that 8-128 was entered, otherwise reject and start Over Done
-// 4-prompts with a series of Y or No to include the different types
-// 5- cycle through different arrays until target pasword length is met
-// 6- display output on screen
+// 4-prompts with a series of Y or No to include the different types; and confirm
+// 5-check that at least one character type has been selected
+// 6- cycle through different arrays until target pasword length is met
+// 7- display output on screen
 
 // Challenge for Assignment
 // GIVEN I need a new, secure password
