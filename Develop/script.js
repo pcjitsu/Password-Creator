@@ -7,6 +7,7 @@ var possibleValues = {
   numberArray: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
   specialArray: ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"],
 };
+console.log(possibleValues);
 
 var generatePassword = function () {
   let passwordLength = Number(prompt("Please Select A Number Between 8 and 128"));
@@ -23,17 +24,22 @@ var passwordValuePool = {};
 var checkValues = function () {
   var lowerArrayCheck = prompt("Do you want to include lower case letters? \n Type Y or N").toLowerCase();
   if ((lowerArrayCheck = "Y")) {
-    passwordValuePool += possibleValues.lowerCaseArray;
+    passwordValuePool.possibleValues[0];
   }
   var upperArrayCheck = prompt("Do you want to include lower case letters? \n Type Y or N").toLowerCase();
   if ((upperArrayCheck = "Y")) {
-    passwordValuePool += possibleValues.upperCaseArray;
+    passwordValuePool.possibleValues[1];
   }
   console.log(passwordValuePool);
 };
 
-//Thinking of array within array and cycling until password is complete
-//2 Ways to solve; remove value pairs on no or add value pairs to array
+//Need to figure out how to add things from one object to another
+
+// Key for random object
+// var randomProperty = function (obj) {
+//   var keys = Object.keys(obj);
+//   return obj[keys[ keys.length * Math.random() << 0]];
+// };
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
