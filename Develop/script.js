@@ -8,12 +8,6 @@ var possibleValues = {
   specialArray: ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"],
 };
 
-// Function to get random item from an object
-// var randomObectValue = function () {
-//   var keyIndex = Math.floor(Math.random() * Object.values(passwordValuePool).length - 1);
-//   console.log(passwordValuePool[keyIndex]);
-// };
-
 //Get Arrays prepped for pool of values
 var passwordValuePool = {};
 //Start adding values to pool with checks
@@ -63,12 +57,6 @@ var generatePassword = function () {
   }
   checkValues();
 };
-
-// Key for random object
-// var randomProperty = function (obj) {
-//   var keys = Object.keys(obj);
-//   return obj[keys[ keys.length * Math.random() << 0]];
-// };
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
