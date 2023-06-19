@@ -8,6 +8,12 @@ var possibleValues = {
   specialArray: ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"],
 };
 
+// Function to get random item from an object
+// var randomObectValue = function () {
+//   var keyIndex = Math.floor(Math.random() * Object.values(passwordValuePool).length - 1);
+//   console.log(passwordValuePool[keyIndex]);
+// };
+
 //Get Arrays prepped for pool of values
 var passwordValuePool = {};
 //Start adding values to pool with checks
@@ -31,8 +37,25 @@ var checkValues = function () {
   if (Object.values(passwordValuePool).length == 0) {
     alert("You must choose a character type, please try again by clicking the button");
   }
+  if (Object.values(passwordValuePool).length !== 0) {
+    var randomObectValue = function () {
+      var keyIndex = Math.floor(Math.random() * Object.values(passwordValuePool).length);
+      var keyValue = [Object.values(passwordValuePool)[keyIndex]];
+      // var valueIndex = Math.floor(Math.random() * keyValue.length);
+      var valueIndexTest = [Math.floor(Math.random() * keyValue.length)];
+      // console.log(keyValue);
+      // console.log([Object.keys(passwordValuePool)[keyIndex]]);
+      var indexTest = keyValue[valueIndexTest];
+      console.log(keyValue);
+      console.log(keyValue[valueIndexTest]);
+      console.log(indexTest);
+    };
+    randomObectValue();
+  }
 };
+// im only accessing the key not the values
 
+//Checking to ensure numbers are in the required length and also that its a number
 var generatePassword = function () {
   let passwordLength = Number(prompt("Please Select A Number Between 8 and 128"));
   while (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength) === true) {
@@ -40,9 +63,6 @@ var generatePassword = function () {
   }
   checkValues();
 };
-
-//Have to put a stop if a number isnt entered
-// console.log(passwordValuePool);
 
 // Key for random object
 // var randomProperty = function (obj) {
@@ -69,8 +89,8 @@ generateBtn.addEventListener("click", writePassword);
 // 1-Write Code that Promps user on button click Done
 // 2-prompt for length of password between 8-128 Done
 // 3- Validate that 8-128 was entered, otherwise reject and start Over Done
-// 4-prompts with a series of Y or No to include the different types; and confirm
-// 5-check that at least one character type has been selected
+// 4-prompts with a series of Y or No to include the different types; and confirm Done
+// 5-check that at least one character type has been selected Done
 // 6- cycle through different arrays until target pasword length is met
 // 7- display output on screen
 
