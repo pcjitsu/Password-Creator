@@ -16,18 +16,23 @@ var checkValues = function () {
   if ((lowerArrayCheck = "Y")) {
     passwordValuePool.lower = possibleValues.lowerCaseArray;
   }
-  var upperArrayCheck = prompt("Do you want to include lower case letters? \n Type Y or N").toLowerCase();
+  var upperArrayCheck = prompt("Do you want to include upper case letters? \n Type Y or N").toLowerCase();
   if ((upperArrayCheck = "Y")) {
     passwordValuePool.upper = possibleValues.upperCaseArray;
   }
-  var upperArrayCheck = prompt("Do you want to include numbers? \n Type Y or N").toLowerCase();
-  if ((upperArrayCheck = "Y")) {
+  var numberArrayCheck = prompt("Do you want to include numbers? \n Type Y or N").toLowerCase();
+  if ((numberArrayCheck = "Y")) {
     passwordValuePool.number = possibleValues.numberArray;
   }
-  var upperArrayCheck = prompt("Do you want to include special characters? \n Type Y or N").toLowerCase();
-  if ((upperArrayCheck = "Y")) {
+  var specialArrayCheck = prompt("Do you want to include special characters? \n Type Y or N").toLowerCase();
+  if ((specialArrayCheck = "Y")) {
     passwordValuePool.special = possibleValues.specialArray;
   }
+  if (passwordValuePool == {}) {
+    alert("You must choose a character type");
+  }
+
+  console.log(passwordValuePool);
 };
 
 var generatePassword = function () {
@@ -38,7 +43,7 @@ var generatePassword = function () {
   checkValues();
 };
 
-console.log(passwordValuePool);
+// console.log(passwordValuePool);
 
 //Need to add cofirmations
 
