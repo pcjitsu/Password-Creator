@@ -28,9 +28,8 @@ var checkValues = function () {
   if (specialArrayCheck == "y") {
     passwordValuePool.special = possibleValues.specialArray;
   }
-  if (Object.values(passwordValuePool) === {} || undefined || null) {
-    alert("You must choose a character type");
-    checkValues();
+  if (Object.values(passwordValuePool) == {} || null || undefined || []) {
+    alert("You must choose a character type, please try again");
   }
 
   console.log(passwordValuePool);
@@ -44,11 +43,8 @@ var generatePassword = function () {
   checkValues();
 };
 
+//Have to put a stop if a number isnt entered
 // console.log(passwordValuePool);
-
-//Need to add cofirmations
-
-//Assignment Code Below
 
 // Key for random object
 // var randomProperty = function (obj) {
