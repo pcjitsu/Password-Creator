@@ -28,8 +28,9 @@ var checkValues = function () {
   if (specialArrayCheck == "y") {
     passwordValuePool.special = possibleValues.specialArray;
   }
-  if (passwordValuePool == {}) {
+  if (Object.keys(passwordValuePool) == {}) {
     alert("You must choose a character type");
+    checkValues();
   }
 
   console.log(passwordValuePool);
