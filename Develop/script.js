@@ -13,19 +13,19 @@ var passwordValuePool = {};
 //Start adding values to pool with checks
 var checkValues = function () {
   var lowerArrayCheck = prompt("Do you want to include lower case letters? \n Type Y or N").toLowerCase();
-  if ((lowerArrayCheck = "y")) {
+  if (lowerArrayCheck == "y") {
     passwordValuePool.lower = possibleValues.lowerCaseArray;
   }
   var upperArrayCheck = prompt("Do you want to include upper case letters? \n Type Y or N").toLowerCase();
-  if ((upperArrayCheck = "y")) {
+  if (upperArrayCheck == "y") {
     passwordValuePool.upper = possibleValues.upperCaseArray;
   }
   var numberArrayCheck = prompt("Do you want to include numbers? \n Type Y or N").toLowerCase();
-  if ((numberArrayCheck = "y")) {
+  if (numberArrayCheck == "y") {
     passwordValuePool.number = possibleValues.numberArray;
   }
   var specialArrayCheck = prompt("Do you want to include special characters? \n Type Y or N").toLowerCase();
-  if ((specialArrayCheck = "y")) {
+  if (specialArrayCheck == "y") {
     passwordValuePool.special = possibleValues.specialArray;
   }
   if (passwordValuePool == {}) {
