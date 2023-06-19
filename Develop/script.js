@@ -28,16 +28,14 @@ var checkValues = function () {
   if (specialArrayCheck == "y") {
     passwordValuePool.special = possibleValues.specialArray;
   }
-  if (Object.values(passwordValuePool) == {} || null || undefined || []) {
-    alert("You must choose a character type, please try again");
+  if (Object.values(passwordValuePool).length == 0) {
+    alert("You must choose a character type, please try again by clicking the button");
   }
-
-  console.log(passwordValuePool);
 };
 
 var generatePassword = function () {
   let passwordLength = Number(prompt("Please Select A Number Between 8 and 128"));
-  while (passwordLength < 8 || passwordLength > 128) {
+  while (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength) === true) {
     passwordLength = Number(prompt("Please Select A Number Between 8 and 128"));
   }
   checkValues();
