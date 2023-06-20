@@ -10,12 +10,13 @@ var possibleValues = {
 
 //Get Arrays prepped for pool of values
 var passwordValuePool = {};
+var passwordLength = Number(prompt("Please Select A Number Between 8 and 128"));
 
 //Checking to ensure numbers are in the required length and also that its a number
 var generatePassword = function () {
-  var passwordLength = Number(prompt("Please Select A Number Between 8 and 128"));
+  // var passwordLength = Number(prompt("Please Select A Number Between 8 and 128"));
   while (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength) === true) {
-    passwordLength = Number(prompt("Please Select A Number Between 8 and 128"));
+    // passwordLength = Number(prompt("Please Select A Number Between 8 and 128"));
     return passwordLength;
   }
   checkValues();
