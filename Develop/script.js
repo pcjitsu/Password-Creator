@@ -1,4 +1,6 @@
 // Assignment code here\
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
 
 //Creates a loop to continue to prompt user until password length is acceptable
 var possibleValues = {
@@ -10,85 +12,95 @@ var possibleValues = {
 
 //Get Arrays prepped for pool of values
 var passwordValuePool = {};
-var passwordLength = "";
+// var passwordLength = "";
 
 //Checking to ensure numbers are in the required length and also that its a number
 var generatePassword = function () {
-  var passwordLength = Number(prompt("Please Select A Number Between 8 and 128"));
+  var passwordLength = prompt("Please Select A Number Between 8 and 128");
+  console.log("Result: ", passwordLength);
   while (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength) === true) {
     passwordLength = Number(prompt("Please Select A Number Between 8 and 128"));
-    checkValues();
-    characterCheck();
-    createPassword();
   }
+
+  checkValues(passwordLength);
 };
 
 //Start adding key:value pairs to pool with checks
-var checkValues = function () {
-  var lowerArrayCheck = prompt("Do you want to include lower case letters? \n Type Y or N").toLowerCase();
-  if (lowerArrayCheck == "y") {
+var checkValues = function (passwordLength) {
+  var lowerArrayCheck = confirm("Do you want to include lower case letters?");
+  if (lowerArrayCheck === true) {
     passwordValuePool.lower = possibleValues.lowerCaseArray;
   }
-  var upperArrayCheck = prompt("Do you want to include upper case letters? \n Type Y or N").toLowerCase();
-  if (upperArrayCheck == "y") {
+  var upperArrayCheck = confirm("Do you want to include upper case letters?");
+  if (upperArrayCheck == true) {
     passwordValuePool.upper = possibleValues.upperCaseArray;
   }
-  var numberArrayCheck = prompt("Do you want to include numbers? \n Type Y or N").toLowerCase();
-  if (numberArrayCheck == "y") {
+  var numberArrayCheck = confirm("Do you want to include numbers?");
+  if (numberArrayCheck == true) {
     passwordValuePool.number = possibleValues.numberArray;
   }
-  var specialArrayCheck = prompt("Do you want to include special characters? \n Type Y or N").toLowerCase();
-  if (specialArrayCheck == "y") {
+  var specialArrayCheck = confirm("Do you want to include special characters?");
+  if (specialArrayCheck == true) {
     passwordValuePool.special = possibleValues.specialArray;
   }
+
+  characterCheck(passwordLength);
 };
-checkValues();
+// checkValues();
 console.log(passwordValuePool);
 
 //Checking if characters were selected
-var characterCheck = function () {
+var characterCheck = function (passwordLength) {
   if (Object.values(passwordValuePool).length == 0) {
     alert("You must choose a character type, please try again by clicking the button");
   }
 
   //Pulling random valuoe from object
   if (Object.values(passwordValuePool).length !== 0) {
-    var randomObectValue = function () {
-      var keyIndex = Math.floor(Math.random() * Object.values(passwordValuePool).length);
-      var keyValue = Object.values(passwordValuePool)[keyIndex];
-      var valueIndex = Math.floor(Math.random() * keyValue.length);
-      var indexPassword = keyValue[valueIndex];
-      console.log(indexPassword);
-    };
+    createPassword(passwordLength);
   }
 };
 
-characterCheck();
+// var randomObectValue = function () {
+//   var keyIndex = Math.floor(Math.random() * Object.values(passwordValuePool).length);
+//   var keyValue = Object.values(passwordValuePool)[keyIndex];
+//   var valueIndex = Math.floor(Math.random() * keyValue.length);
+//   var indexPassword = keyValue[valueIndex];
+//   console.log(indexPassword);
+// };
+
+// characterCheck();
 
 // Actually start creating the password by looping through the object
 var passwordCreated = "";
-var createPassword = function () {
+var createPassword = function (passwordLength) {
   while (passwordCreated.length < passwordLength) {
-    randomObectValue();
+    // randomObectValue();
+    var keyIndex = Math.floor(Math.random() * Object.values(passwordValuePool).length);
+    var keyValue = Object.values(passwordValuePool)[keyIndex];
+    var valueIndex = Math.floor(Math.random() * keyValue.length);
+    var indexPassword = keyValue[valueIndex];
+    console.log(indexPassword);
     passwordCreated += indexPassword;
     console.log(passwordCreated);
   }
+
+  var passwordText = document.querySelector("#password");
+  passwordText.value = passwordCreated;
 };
 //return on generatePassword()
 
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
-
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+// function writePassword() {
+//   // var password = generatePassword();
+//   // var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
-}
+//   // passwordText.value = password;
+//   generatePassword();
+// }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", generatePassword);
 
 // PSUEDO FOR ASSIGNMENT//
 
