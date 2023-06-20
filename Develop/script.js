@@ -10,16 +10,17 @@ var possibleValues = {
 
 //Get Arrays prepped for pool of values
 var passwordValuePool = {};
-var passwordLength = Number(prompt("Please Select A Number Between 8 and 128"));
+var passwordLength = "";
 
 //Checking to ensure numbers are in the required length and also that its a number
 var generatePassword = function () {
-  // var passwordLength = Number(prompt("Please Select A Number Between 8 and 128"));
+  var passwordLength = Number(prompt("Please Select A Number Between 8 and 128"));
   while (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength) === true) {
-    // passwordLength = Number(prompt("Please Select A Number Between 8 and 128"));
-    return passwordLength;
+    passwordLength = Number(prompt("Please Select A Number Between 8 and 128"));
+    checkValues();
+    characterCheck();
+    createPassword();
   }
-  checkValues();
 };
 
 //Start adding key:value pairs to pool with checks
@@ -40,10 +41,16 @@ var checkValues = function () {
   if (specialArrayCheck == "y") {
     passwordValuePool.special = possibleValues.specialArray;
   }
-  //Checking if characters were selected
+};
+checkValues();
+console.log(passwordValuePool);
+
+//Checking if characters were selected
+var characterCheck = function () {
   if (Object.values(passwordValuePool).length == 0) {
     alert("You must choose a character type, please try again by clicking the button");
   }
+
   //Pulling random valuoe from object
   if (Object.values(passwordValuePool).length !== 0) {
     var randomObectValue = function () {
@@ -53,17 +60,20 @@ var checkValues = function () {
       var indexPassword = keyValue[valueIndex];
       console.log(indexPassword);
     };
-    // Actually start creating the password by looping through the object
-    var passwordCreated = "";
-
-    while (passwordCreated.length < passwordLength) {
-      randomObectValue();
-      passwordCreated += indexPassword;
-      console.log(passwordCreated);
-    }
   }
 };
 
+characterCheck();
+
+// Actually start creating the password by looping through the object
+var passwordCreated = "";
+var createPassword = function () {
+  while (passwordCreated.length < passwordLength) {
+    randomObectValue();
+    passwordCreated += indexPassword;
+    console.log(passwordCreated);
+  }
+};
 //return on generatePassword()
 
 // Get references to the #generate element
