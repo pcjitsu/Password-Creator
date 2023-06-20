@@ -10,7 +10,18 @@ var possibleValues = {
 
 //Get Arrays prepped for pool of values
 var passwordValuePool = {};
-//Start adding values to pool with checks
+
+//Checking to ensure numbers are in the required length and also that its a number
+var generatePassword = function () {
+  var passwordLength = Number(prompt("Please Select A Number Between 8 and 128"));
+  while (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength) === true) {
+    passwordLength = Number(prompt("Please Select A Number Between 8 and 128"));
+    return passwordLength;
+  }
+  checkValues();
+};
+
+//Start adding key:value pairs to pool with checks
 var checkValues = function () {
   var lowerArrayCheck = prompt("Do you want to include lower case letters? \n Type Y or N").toLowerCase();
   if (lowerArrayCheck == "y") {
@@ -28,35 +39,31 @@ var checkValues = function () {
   if (specialArrayCheck == "y") {
     passwordValuePool.special = possibleValues.specialArray;
   }
+  //Checking if characters were selected
   if (Object.values(passwordValuePool).length == 0) {
     alert("You must choose a character type, please try again by clicking the button");
   }
+  //Pulling random valuoe from object
   if (Object.values(passwordValuePool).length !== 0) {
     var randomObectValue = function () {
       var keyIndex = Math.floor(Math.random() * Object.values(passwordValuePool).length);
-      var keyValue = [Object.values(passwordValuePool)[keyIndex]];
-      // var valueIndex = Math.floor(Math.random() * keyValue.length);
-      var valueIndexTest = [Math.floor(Math.random() * keyValue.length)];
-      // console.log(keyValue);
-      // console.log([Object.keys(passwordValuePool)[keyIndex]]);
-      var indexTest = keyValue[valueIndexTest];
-      console.log(keyValue);
-      console.log(keyValue[valueIndexTest]);
-      console.log(indexTest);
+      var keyValue = Object.values(passwordValuePool)[keyIndex];
+      var valueIndex = Math.floor(Math.random() * keyValue.length);
+      var indexPassword = keyValue[valueIndex];
+      console.log(indexPassword);
     };
-    randomObectValue();
-  }
-};
-// im only accessing the key not the values
+    // Actually start creating the password by looping through the object
+    var passwordCreated = "";
 
-//Checking to ensure numbers are in the required length and also that its a number
-var generatePassword = function () {
-  let passwordLength = Number(prompt("Please Select A Number Between 8 and 128"));
-  while (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength) === true) {
-    passwordLength = Number(prompt("Please Select A Number Between 8 and 128"));
+    while (passwordCreated.length < passwordLength) {
+      randomObectValue();
+      passwordCreated += indexPassword;
+      console.log(passwordCreated);
+    }
   }
-  checkValues();
 };
+
+//return on generatePassword()
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
