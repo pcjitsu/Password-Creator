@@ -37,4 +37,4 @@ MIT License
 Click button and run through prompts
 
 Go to website and compare to mock up; please look at screenshot
-![WebAppScreenshot](Assets/images/Password-Creator-Mock.png?raw=true)
+![WebAppScreenshot](assets/images/Password-Creator-Mock.png?raw=true)
