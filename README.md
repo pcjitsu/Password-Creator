@@ -21,6 +21,10 @@ If no characters are selected during prompt, please refresh page.
 
 How to use this app is to go to website, compare to acceptance criteria, click generate button, make selections of at least 1 character type and check output
 
+Go to WebPage found here
+
+https://pcjitsu.github.io/Password-Creator/
+
 ## Credits
 
 SMU Bootcamp Resources
